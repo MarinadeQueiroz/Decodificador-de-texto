@@ -1,0 +1,36 @@
+// Função para decodificar o texto
+function decodificarTexto(textoCodificado) {
+    // Define o alfabeto codificado
+    const alfabetoCodificado = 'zyxwvutsrqponmlkjihgfedcba';
+
+    // Converte o texto codificado para minúsculas
+    textoCodificado = textoCodificado.toLowerCase();
+
+    // Inicializa a variável para armazenar o texto decodificado
+    let textoDecodificado = '';
+
+    // Percorre cada caractere do texto codificado
+    for (let i = 0; i < textoCodificado.length; i++) {
+        const caractereCodificado = textoCodificado[i];
+        let caractereDecodificado = caractereCodificado;
+
+        // Verifica se o caractere é uma letra minúscula
+        if (/^[a-z]+$/.test(caractereCodificado)) {
+            // Encontra o índice do caractere no alfabeto codificado
+            const indice = alfabetoCodificado.indexOf(caractereCodificado);
+            // Se encontrou, substitui pelo caractere correspondente no alfabeto original
+            if (indice !== -1) {
+                caractereDecodificado = String.fromCharCode(97 + indice);
+            }
+        }
+        // Adiciona o caractere decodificado ao texto final
+        textoDecodificado += caractereDecodificado;
+    }
+
+    return textoDecodificado;
+}
+
+// Exemplo de uso da função de decodificação
+const textoCodificado = 'svool dliow!';
+const textoDecodificado = decodificarTexto(textoCodificado);
+console.log(textoDecodificado); // Saída: hello world!
